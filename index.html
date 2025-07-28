@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramesh R Sharma - Film Director, Writer, Assistant Director</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+/* TIMELINE COMPONENT RE-ENGINEERED */
+.timeline__container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 0 40px 0;
+}
+.timeline__container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 4px;
+  transform: translateX(-50%);
+  background: var(--color-teal-300, #21a99a);
+  z-index: 0;
+}
+.timeline__item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 56px;
+  position: relative;
+  z-index: 1;
+}
+.timeline__item.left {
+  flex-direction: row;
+}
+.timeline__item.right {
+  flex-direction: row-reverse;
+}
+.timeline__content {
+  background: var(--color-charcoal-700, #222d2d);
+  color: #e6f9ff;
+  padding: 30px 36px;
+  border-radius: 8px;
+  border: 1.5px solid var(--color-teal-300, #21a99a);
+  min-width: 260px;
+  max-width: 370px;
+  margin: 0 36px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.10);
+}
+.timeline__content h4 {
+  color: #24e8ff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.timeline__content p {
+  color: #f7feff;
+  font-weight: 400;
+}
+.timeline__year {
+  background: var(--color-teal-300, #21a99a);
+  color: var(--color-slate-900, #1c3441);
+  padding: 12px 22px;
+  border-radius: 24px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  min-width: 88px;
+  text-align: center;
+  box-shadow: 0 0 0 4px #212f2f;
+  z-index: 2;
+}
+/* Alternate left/right for visual timeline step */
+.timeline__item.left .timeline__year { order: 1; }
+.timeline__item.left .timeline__content { order: 2; }
+.timeline__item.right .timeline__year { order: 2; }
+.timeline__item.right .timeline__content { order: 1; }
+
+/* Responsive for mobile: vertical stack */
+@media (max-width: 800px) {
+  .timeline__container::before { left: 30px; }
+  .timeline__item, .timeline__item.left, .timeline__item.right {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .timeline__year {
+    min-width: 56px;
+    font-size: 1rem;
+    margin-top: 12px;
+    padding: 8px 13px;
+    box-shadow: none;
+  }
+  .timeline__content {
+    margin: 0 0 0 22px;
+    min-width: 0;
+    max-width: 90vw;
+    padding: 22px 13px;
+  }
+  .timeline__item.left .timeline__year,
+  .timeline__item.right .timeline__year { order: 1; }
+  .timeline__item.left .timeline__content,
+  .timeline__item.right .timeline__content { order: 2; }
+}
+    </style>
+</head>
+<body>
+    <!-- Header Navigation -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="nav__logo">
+                <h3>Ramesh R Sharma</h3>
+            </div>
+            <ul class="nav__menu">
+                <li><a href="#home" class="nav__link">Home</a></li>
+                <li><a href="#bio" class="nav__link">Biography</a></li>
+                <li><a href="#filmography" class="nav__link">Filmography</a></li>
+                <li><a href="#tv-serials" class="nav__link">TV Serials</a></li>
+                <li><a href="#contact" class="nav__link">Contact</a></li>
+            </ul>
+            <button class="nav__toggle" id="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero__content container">
+            <div class="hero__text">
+                <h1 class="hero__title">Ramesh R Sharma</h1>
+                <h2 class="hero__subtitle">Film Director, Writer, Assistant Director</h2>
+                <p class="hero__tagline">From Assistant to Director - A Journey Through Indian Cinema</p>
+                <p class="hero__description">With decades of experience in Bollywood, connected to the legendary B.R. Films and having worked under B.R. Chopra and Ravi Chopra.</p>
+                <div class="hero__buttons">
+                    <button class="btn btn--primary" onclick="scrollToSection('bio')">Learn More</button>
+                    <button class="btn btn--outline" onclick="scrollToSection('contact')">Get in Touch</button>
+                </div>
+            </div>
+            <div class="hero__image">
+                <img src="https://pplx-res.cloudinary.com/image/upload/v1753508933/pplx_project_search_images/b399c1ccc9c607d03b312024e5727979888cfbff.jpg" alt="Ramesh R Sharma - Professional Portrait" class="hero__img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Biography Section -->
+    <section id="bio" class="biography">
+        <div class="container">
+            <h2 class="section__title">Biography</h2>
+            <div class="biography__content">
+                <div class="biography__text">
+                    <p class="biography__intro">Director Ramesh Sharma, who is connected to B.R. Films, had worked as an assistant director under B.R. Chopra and Ravi Chopra for decades. Born in Uttar Pradesh, Director Ramesh Sharma has built an impressive career spanning films, television serials, and advertisements.</p>
+                    
+                    <div class="biography__details">
+                        <div class="detail-card">
+                            <h4>Origin</h4>
+                            <p>Born in Uttar Pradesh, India</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Career Start</h4>
+                            <p>1986 - Started as trainee assistant director</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Connection</h4>
+                            <p>Connected to B.R. Films</p>
+                        </div>
+                        <div class="detail-card">
+                            <h4>Specialization</h4>
+                            <p>Second Unit Director, Assistant Director, Director, Writer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="biography__image">
+                    <img src="https://pplx-res.cloudinary.com/image/upload/v1753443118/pplx_project_search_images/6eb5feaf716dece742a1128b11512662bb6b5295.jpg" alt="Behind the scenes of Bollywood film making" class="biography__img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Highlights -->
+    <section class="highlights">
+        <div class="container">
+            <h2 class="section__title">Career Highlights</h2>
+            <div class="highlights__grid">
+                <div class="highlight-card">
+                    <div class="highlight-card__icon">🎬</div>
+                    <h3>B.R. Films Legacy</h3>
+                    <p>Worked as assistant director under legendary B.R. Chopra and Ravi Chopra for decades</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-card__icon">📺</div>
+                    <h3>Television Excellence</h3>
+                    <p>Contributed to iconic TV serials like Mahabharat, Jhansi Ki Rani, and Kanoon</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-card__icon">🎭</div>
+                    <h3>Independent Direction</h3>
+                    <p>Directed youth movies and original content including "The New Face of India"</p>
+                </div>
+                <div class="highlight-card">
+                    <div class="highlight-card__icon">📢</div>
+                    <h3>Advertisement Films</h3>
+                    <p>Created commercials for major brands like Clinic Plus, Godrej, and Lux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Career Timeline -->
+    <section class="timeline">
+        <div class="container">
+            <h2 class="section__title">Career Timeline</h2>
+            <div class="timeline__container">
+                <div class="timeline__item left">
+                    <div class="timeline__year">1986</div>
+                    <div class="timeline__content">
+                        <h4>Career Beginning</h4>
+                        <p>Started as trainee assistant director with Bahadur Shah Zafar</p>
+                    </div>
+                </div>
+                <div class="timeline__item right">
+                    <div class="timeline__year">1990</div>
+                    <div class="timeline__content">
+                        <h4>Mahabharat</h4>
+                        <p>Worked on the iconic Mahabharat TV series</p>
+                    </div>
+                </div>
+                <div class="timeline__item left">
+                    <div class="timeline__year">1993-1996</div>
+                    <div class="timeline__content">
+                        <h4>Television Success</h4>
+                        <p>Assistant director on Kanoon and Jhansi Ki Rani TV series</p>
+                    </div>
+                </div>
+                <div class="timeline__item right">
+                    <div class="timeline__year">1997-1998</div>
+                    <div class="timeline__content">
+                        <h4>Independent Direction</h4>
+                        <p>Directed Awaaz-e-hind Vande Mataram</p>
+                    </div>
+                </div>
+                <div class="timeline__item left">
+                    <div class="timeline__year">2003</div>
+                    <div class="timeline__content">
+                        <h4>Film Success</h4>
+                        <p>Assistant director on Baghban film</p>
+                    </div>
+                </div>
+                <div class="timeline__item right">
+                    <div class="timeline__year">2011</div>
+                    <div class="timeline__content">
+                        <h4>Youth Cinema</h4>
+                        <p>Directed "The New Face of India"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filmography Section -->
+    <section id="filmography" class="filmography">
+        <div class="container">
+            <h2 class="section__title">Filmography</h2>
+            
+            <div class="filmography__category">
+                <h3>Films as Assistant Director</h3>
+                <div class="film-grid">
+                    <div class="film-card">
+                        <h4>BoyFriend (1993)</h4>
+                        <p class="film-role">Third Assistant Director</p>
+                    </div>
+                    <div class="film-card">
+                        <h4>Ghar Ka Kanoon (1995)</h4>
+                        <p class="film-role">Third Assistant Director</p>
+                    </div>
+                    <div class="film-card">
+                        <h4>Ganga aur Gayatri</h4>
+                        <p class="film-role">Associate Director</p>
+                    </div>
+                    <div class="film-card">
+                        <h4>Baghban (2003)</h4>
+                        <p class="film-role">Assistant Director</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filmography__category">
+                <h3>Independent Direction</h3>
+                <div class="film-grid">
+                    <div class="film-card">
+                        <h4>The New Face of India (2011)</h4>
+                        <p class="film-role">Director/Writer</p>
+                        <span class="film-type">Youth Movie</span>
+                    </div>
+                    <div class="film-card">
+                        <h4>The Last Encounter</h4>
+                        <p class="film-role">Director/Writer</p>
+                        <span class="film-type">Youth Movie</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="filmography__category">
+                <h3>Advertisement Films</h3>
+                <div class="ad-grid">
+                    <div class="ad-card">
+                        <h4>Clinic Plus</h4>
+                        <p>Hair Care</p>
+                    </div>
+                    <div class="ad-card">
+                        <h4>Godrej Hair Die</h4>
+                        <p>Beauty</p>
+                    </div>
+                    <div class="ad-card">
+                        <h4>Maharashtra Raja Lottery</h4>
+                        <p>Entertainment</p>
+                    </div>
+                    <div class="ad-card">
+                        <h4>Ritasa Acting Academy</h4>
+                        <p>Education</p>
+                    </div>
+                    <div class="ad-card">
+                        <h4>Lux</h4>
+                        <p>Beauty</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TV Serials Showcase -->
+    <section id="tv-serials" class="tv-serials">
+        <div class="container">
+            <h2 class="section__title">Television Serials</h2>
+            
+            <div class="tv-showcase">
+                <div class="tv-featured">
+                    <div class="featured-serial">
+                        <div class="featured-serial__image">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1749095919/pplx_project_search_images/f785bc0d508aba858f6b6a1ce925ce6353a18902.jpg" alt="Mahabharat TV Serial Poster" class="featured-img">
+                        </div>
+                        <div class="featured-serial__content">
+                            <h3>Mahabharat (1990)</h3>
+                            <p class="role-badge">Trainee Assistant Director</p>
+                            <p>Worked on the legendary B.R. Chopra's epic television series that became a cultural phenomenon in India.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="featured-serial">
+                        <div class="featured-serial__image">
+                            <img src="https://pplx-res.cloudinary.com/image/upload/v1753508933/pplx_project_search_images/0644cea45d1be72fcff7c935602c0d95c3284a9a.jpg" alt="Jhansi Ki Rani TV Serial Poster" class="featured-img">
+                        </div>
+                        <div class="featured-serial__content">
+                            <h3>Jhansi Ki Rani (1995-1996)</h3>
+                            <p class="role-badge">Assistant Director</p>
+                            <p>Contributed to the historic television series about the valiant queen Rani Lakshmibai of Jhansi.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tv-grid">
+                <div class="tv-category">
+                    <h3>Popular TV Serials</h3>
+                    <div class="serial-list">
+                        <div class="serial-item">
+                            <h4>Kanoon (1993-1996)</h4>
+                            <p>Assistant Director</p>
+                        </div>
+                        <div class="serial-item">
+                            <h4>Ek Se Badkar Ek (1995)</h4>
+                            <p>Assistant Director</p>
+                        </div>
+                        <div class="serial-item">
+                            <h4>Rangoli</h4>
+                            <p>Assistant Director</p>
+                        </div>
+                        <div class="serial-item">
+                            <h4>Changez Khan</h4>
+                            <p>Assistant Director</p>
+                        </div>
+                        <div class="serial-item">
+                            <h4>Bada Admi</h4>
+                            <p>Assistant Director</p>
+                        </div>
+                        <div class="serial-item">
+                            <h4>Aurat (1997)</h4>
+                            <p>Assistant Director</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tv-category">
+                    <h3>Independent Direction</h3>
+                    <div class="serial-list">
+                        <div class="serial-item">
+                            <h4>Awaaz-e-hind Vande Mataram (1997-1998)</h4>
+                            <p>Director/Writer</p>
+                        </div>
+                        <div class="serial-item">
+                            <h4>Nanhi Ki Muskan</h4>
+                            <p>Director</p>
+                        </div>
+                        <div class="serial-item">
+                            <h4>Pardesi</h4>
+                            <p>Director</p>
+                        </div>
+                        <div class="serial-item">
+                            <h4>Mohabbat Youn Nahi Hoti</h4>
+                            <p>Director</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section__title">Contact</h2>
+            <div class="contact__content">
+                <div class="contact__info">
+                    <h3>Get in Touch</h3>
+                    <p>Connect with Ramesh R Sharma for film projects, collaborations, or professional inquiries.</p>
+                    
+                    <div class="contact__details">
+                        <div class="contact__item">
+                            <strong>Location:</strong> India
+                        </div>
+                        <div class="contact__item">
+                            <strong>Experience:</strong> 1986 - Present
+                        </div>
+                        <div class="contact__item">
+                            <strong>Specialization:</strong> Direction, Writing, Assistant Direction
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact__social">
+                    <h3>Social Media</h3>
+                    <div class="social-links">
+                        <a href="https://www.imdb.com/name/nm13643229/" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <span>IMDb Profile</span>
+                        </a>
+                        <a href="https://www.instagram.com/directoramesharma123/" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://in.linkedin.com/in/ramesh-r-sharma-26b376137" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="https://www.facebook.com/p/Ramesh-R-Sharma-100013049229970/" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <span>Facebook</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Ramesh R Sharma. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+function scrollToSection(sectionId) {
+    var targetSection = document.getElementById(sectionId);
+    if(targetSection){
+        var headerHeight = document.querySelector('.header').offsetHeight || 0;
+        var targetPosition = targetSection.offsetTop - headerHeight;
+        window.scrollTo({top: targetPosition, behavior: 'smooth'});
+    }
+}
+    </script>
+    <script src="app.js"></script>
+</body>
+</html>
